@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "noEmitOnError": false,
+    "rootDir": ".",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceRoot": "src/main/webapp",
+    "inlineSourceMap": true,
+    "inlineSources": true
+  },
+  "exclude": [
+    "src/main/webapp/node_modules"
+  ],
+  "compileOnSave": false,
+  "files": [
+        "src/main/webapp/typings.d.ts",
+        "src/main/webapp/typings/index.d.ts",
+        "src/main/webapp/app/main.ts",
+        "src/main/webapp/app/app.module.ts",
+        "src/main/webapp/app/app.component.ts",
+     	"src/main/webapp/node_modules/typescript/lib/lib.es6.d.ts"
+   ]
+}

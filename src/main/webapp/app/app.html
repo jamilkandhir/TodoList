@@ -1,0 +1,49 @@
+<div class="container">
+	<fieldset>
+		<legend>
+			Todo List
+		</legend>
+  <div *ngIf="todosLength == 0">
+  		<div class="text-center"> No todos to List</div>
+	</div>	
+		
+<ul id="myUL">
+  <li *ngFor="let todo of todos"> {{todo.taskName}} 
+			<span [ngClass]="{'app-badge-completed': todo.completed, 'app-badge-pending': !todo.completed}"  class="badge">{{todo.completed == false ? 'Pending' : 'Completed'}}</span> 
+			<span class="delete glyphicon glyphicon-remove"  title="Delete Task" (click)="deleteTask(todo)"></span>
+			<span class="completed glyphicon glyphicon-ok" title="Mark As Completed" (click)="saveTask('',todo)" *ngIf="!todo.completed"></span>
+			<span class="pending glyphicon glyphicon-exclamation-sign"  title="Mark As Pending" (click)="saveTask('',todo)" *ngIf="todo.completed"></span>
+			
+	</li>
+</ul>	
+</fieldset>
+</div>
+<div class="container">
+	<fieldset>
+		<legend>
+			Add New Task
+		</legend>
+<form [formGroup]="form " >
+		<div class="section ">
+				<div class="row ">
+					<div class="col-lg-6 col-md-8 col-sm-8 ">
+						<div class="row ">
+							<label class="col-md-4 ">Task Name * </label>
+							<div class="col-md-8 ">
+								<input type="text " class="form-control " [(ngModel)]="task.taskName" 
+								[formControl]="form.controls['taskName']">
+								<div class="alert alert-danger" *ngIf="form.get('taskName').hasError('required')  && form.get('taskName').touched">
+									<a href="" class="close" data-dismiss="alert">&times;</a>
+									<strong>Error!</strong>  Task Name is Required 
+							</div>
+							</div>
+						</div>
+						
+					</div>
+					<button type="button" (click)="saveTask('save')" [disabled]="!form.valid" class="btn btn-sm btn-primary" >Save</button>	
+				</div>
+				
+			</div>
+</form>
+	</fieldset>	
+</div>
